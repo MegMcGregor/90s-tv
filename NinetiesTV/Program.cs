@@ -79,31 +79,36 @@ namespace NinetiesTV
         // 6. Return the average IMDB rating for all the shows.
         static double AverageRating(List<Show> shows)
         {
-            throw new NotImplementedException();
+            double avRating = shows.Average(s => s.ImdbRating);
+            return avRating;
         }
 
         // 7. Return the shows that started and ended in the 90s.
         static List<Show> OnlyInNineties(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<Show> Nineties = shows.Where(s => s.StartYear >= 1990 && s.EndYear < 2000 == true).ToList();
+            return Nineties;
         }
 
         // 8. Return the top three highest rated shows.
         static List<Show> TopThreeByRating(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<Show> TopThree = shows.OrderByDescending(s => s.ImdbRating).Take(3).ToList();
+            return TopThree;
         }
 
         // 9. Return the shows whose name starts with the word "The".
         static List<Show> TheShows(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<Show> StartsWithThe = shows.Where(s => s.Name.StartsWith("The") == true).ToList();
+            return StartsWithThe;
         }
 
         // 10. Return all shows except for the lowest rated show.
         static List<Show> AllButWorst(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<Show> ExcludeWorst = shows.OrderBy(s => s.ImdbRating).Skip(1).ToList();
+            return ExcludeWorst;
         }
 
         // 11. Return the names of the shows that had fewer than 100 episodes.
