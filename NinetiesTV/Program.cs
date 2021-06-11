@@ -114,32 +114,36 @@ namespace NinetiesTV
         // 11. Return the names of the shows that had fewer than 100 episodes.
         static List<string> FewEpisodes(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<string> ShortLived = shows.Where(s => s.EpisodeCount < 100).Select(s => s.Name).ToList();
+            return ShortLived;
         }
 
         // 12. Return all shows ordered by the number of years on air.
         //     Assume the number of years between the start and end years is the number of years the show was on.
         static List<Show> ShowsByDuration(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<Show> SortByDuration = shows.OrderBy(s => s.EndYear - s.StartYear).ToList();
+            return SortByDuration;
         }
 
         // 13. Return the names of the comedy shows sorted by IMDB rating.
         static List<string> ComediesByRating(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<string> SortedByRating = shows.OrderByDescending(s => s.ImdbRating).Select(s => s.Name).ToList();
+            return SortedByRating;
         }
 
         // 14. Return the shows with more than one genre ordered by their starting year.
         static List<Show> WithMultipleGenresByStartYear(List<Show> shows)
         {
-            throw new NotImplementedException();
+            List<Show> MultiGenreByStartYear = shows.Where(s => s.Genres.Count() > 1).OrderBy(s => s.StartYear).ToList();
+            return MultiGenreByStartYear;
         }
 
         // 15. Return the show with the most episodes.
         static Show MostEpisodes(List<Show> shows)
         {
-            throw new NotImplementedException();
+            Show LongLived = shows.Max(s => s.EpisodeCount)
         }
 
         // 16. Order the shows by their ending year then return the first 
